@@ -38,10 +38,10 @@ public class Peserta {
 	@JoinColumn(name="id_user")
 	private User user;
 	
-	/*@ManyToOne
-	@JoinColumn(name="id_kelas")
-	private Kelas kelas;
-	*/
+	@ManyToOne
+	@JoinColumn(name="id_sesi_kelas")
+	private SesiKelas sesiKelas;
+	
 	@Column(name="no_ktp", nullable = false)
 	private String noKtp;
 	
@@ -54,6 +54,12 @@ public class Peserta {
 	
 	
 	
+	public SesiKelas getSesiKelas() {
+		return sesiKelas;
+	}
+	public void setSesiKelas(SesiKelas sesiKelas) {
+		this.sesiKelas = sesiKelas;
+	}
 	public int getIdPeserta() {
 		return idPeserta;
 	}

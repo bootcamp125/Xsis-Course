@@ -1,37 +1,32 @@
 package com.xsis.training125.model;
 
-public class SesiKelas {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private int id_sesi_kelas;
-	private String nama_kelas;
-	private String tanggal_mulai;
-	private String tanggal_selesai;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@Table(name="SESI_KELAS")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="@id")
+public class SesiKelas {
 	
+	@Id
+	@Column(name="id_sesi_kelas")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idSesiKelas;
 	
+	@Column(name="nama_kelas")
+	private String namaKelas;
 	
-	public int getId_sesi_kelas() {
-		return id_sesi_kelas;
-	}
-	public void setId_sesi_kelas(int id_sesi_kelas) {
-		this.id_sesi_kelas = id_sesi_kelas;
-	}
-	public String getNama_kelas() {
-		return nama_kelas;
-	}
-	public void setNama_kelas(String nama_kelas) {
-		this.nama_kelas = nama_kelas;
-	}
-	public String getTanggal_mulai() {
-		return tanggal_mulai;
-	}
-	public void setTanggal_mulai(String tanggal_mulai) {
-		this.tanggal_mulai = tanggal_mulai;
-	}
-	public String getTanggal_selesai() {
-		return tanggal_selesai;
-	}
-	public void setTanggal_selesai(String tanggal_selesai) {
-		this.tanggal_selesai = tanggal_selesai;
-	}
+	@Column(name="tanggal_mulai")
+	private String tanggalMulai;
 	
+	@Column(name="tanggal_selesai")
+	private String tanggalSelesai;
+		
 }
