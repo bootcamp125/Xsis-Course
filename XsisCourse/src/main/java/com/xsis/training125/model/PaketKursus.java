@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity //untuk menjadikan kelas menjadi sebuah tabel secara otomatis
-@Table(name = "Paket_Kursus")
+@Table(name = "PAKET_KURSUS")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class PaketKursus {
 
