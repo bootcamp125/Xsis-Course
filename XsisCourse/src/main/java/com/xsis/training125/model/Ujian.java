@@ -1,44 +1,38 @@
 package com.xsis.training125.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "Ujian")
+@Table(name = "UJIAN")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Ujian {
 	
-	private int id_ujian;
-	private int id_peserta;
-	private String nama_ujian;
-	private String hasil_ujian;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="id_ujian")
+	private int idUjian;
+
+	@ManyToOne
+	@JoinColumn(name="id_peserta")
+	private Peserta peserta;
 	
-	public int getId_ujian() {
-		return id_ujian;
-	}
-	public void setId_ujian(int id_ujian) {
-		this.id_ujian = id_ujian;
-	}
-	public int getId_peserta() {
-		return id_peserta;
-	}
-	public void setId_peserta(int id_peserta) {
-		this.id_peserta = id_peserta;
-	}
-	public String getNama_ujian() {
-		return nama_ujian;
-	}
-	public void setNama_ujian(String nama_ujian) {
-		this.nama_ujian = nama_ujian;
-	}
-	public String getHasil_ujian() {
-		return hasil_ujian;
-	}
-	public void setHasil_ujian(String hasil_ujian) {
-		this.hasil_ujian = hasil_ujian;
-	}
+	@Column(name="nama_ujian")
+	private String namaUjian;
+	
+	@Column(name="hasil_ujian")
+	private String hasilUjian;
+
+
+
 
 }

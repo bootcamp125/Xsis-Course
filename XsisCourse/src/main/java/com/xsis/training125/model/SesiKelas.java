@@ -2,8 +2,12 @@ package com.xsis.training125.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -11,41 +15,66 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "Sesi_Kelas")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@Table(name="SESI_KELAS")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="@id")
 public class SesiKelas {
-
-	private int id_sesi_kelas;
-	private String nama_kelas;
-	private String tanggal_mulai;
-	private String tanggal_selesai;
+	
+	@Id
+	@Column(name="id_sesi_kelas")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int idSesiKelas;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
 	private List<Jadwal> jadwal;
 	
-	public int getId_sesi_kelas() {
-		return id_sesi_kelas;
-	}
-	public void setId_sesi_kelas(int id_sesi_kelas) {
-		this.id_sesi_kelas = id_sesi_kelas;
-	}
-	public String getNama_kelas() {
-		return nama_kelas;
-	}
-	public void setNama_kelas(String nama_kelas) {
-		this.nama_kelas = nama_kelas;
-	}
-	public String getTanggal_mulai() {
-		return tanggal_mulai;
-	}
-	public void setTanggal_mulai(String tanggal_mulai) {
-		this.tanggal_mulai = tanggal_mulai;
-	}
-	public String getTanggal_selesai() {
-		return tanggal_selesai;
-	}
-	public void setTanggal_selesai(String tanggal_selesai) {
-		this.tanggal_selesai = tanggal_selesai;
-	}
 	
+	@Column(name="nama_kelas")
+	private String namaKelas;
+	
+	@Column(name="tanggal_mulai")
+	private String tanggalMulai;
+	
+	@Column(name="tanggal_selesai")
+	private String tanggalSelesai;
+
+	public int getIdSesiKelas() {
+		return idSesiKelas;
+	}
+
+	public void setIdSesiKelas(int idSesiKelas) {
+		this.idSesiKelas = idSesiKelas;
+	}
+
+	public List<Jadwal> getJadwal() {
+		return jadwal;
+	}
+
+	public void setJadwal(List<Jadwal> jadwal) {
+		this.jadwal = jadwal;
+	}
+
+	public String getNamaKelas() {
+		return namaKelas;
+	}
+
+	public void setNamaKelas(String namaKelas) {
+		this.namaKelas = namaKelas;
+	}
+
+	public String getTanggalMulai() {
+		return tanggalMulai;
+	}
+
+	public void setTanggalMulai(String tanggalMulai) {
+		this.tanggalMulai = tanggalMulai;
+	}
+
+	public String getTanggalSelesai() {
+		return tanggalSelesai;
+	}
+
+	public void setTanggalSelesai(String tanggalSelesai) {
+		this.tanggalSelesai = tanggalSelesai;
+	}
+		
 }

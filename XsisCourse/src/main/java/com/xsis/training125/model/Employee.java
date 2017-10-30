@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "EMPLOYEE")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Employee {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id //primary key
+    @GeneratedValue(strategy=GenerationType.AUTO) //auto increment
 	private int id;
-    @Column(name="NAME", nullable=false)
+    @Column(name="NAME", nullable=false) //membuat kolom dengan nama berbeda dari classnya
 	private String name;
 	private String address;
 	@Column(unique=true)

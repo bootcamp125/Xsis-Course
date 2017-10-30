@@ -3,8 +3,12 @@ package com.xsis.training125.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,21 +18,23 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "Peserta")
+@Table(name = "PESERTA")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Peserta {
-
-	private int id_peserta;
-	private String no_ktp;
-	private String nama_lengkap;
-	private Date tanggal_lahir;
-	private String alamat;
 	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.SEQUENCE) //Auto Increment
+	@Column(name="id_peserta")
+	private int idPeserta;
+	
+	//Membuat One to Many untuk tabel ujian dan feedback
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="peserta")
-	private List<Feedback> feedback;
 	private List<Ujian> ujian;
+	private List<Feedback> feedback;
 	private List<Pembayaran> pembayaran;
-
+	
+	
+	
 	@ManyToOne
 	@JoinColumn(name="id_user")
 	private User user;
@@ -36,61 +42,75 @@ public class Peserta {
 	@ManyToOne
 	@JoinColumn(name="id_sesi_kelas")
 	private SesiKelas sesiKelas;
+	
+	@Column(name="no_ktp", nullable = false)
+	private String noKtp;
+	
+	@Column(name="nama_lengkap", nullable=false)
+	private String namaLengkap;
 
-	public int getId_peserta() {
-		return id_peserta;
+	@Column(name="tanggal_lahir", nullable=false)
+	private Date tanggalLahir;
+	private String alamat;
+	public int getIdPeserta() {
+		return idPeserta;
 	}
-	
-	public void setId_peserta(int id_peserta) {
-		this.id_peserta = id_peserta;
+	public void setIdPeserta(int idPeserta) {
+		this.idPeserta = idPeserta;
 	}
-	
-	public String getNo_ktp() {
-		return no_ktp;
-	}
-	
-	public void setNo_ktp(String no_ktp) {
-		this.no_ktp = no_ktp;
-	}
-	
-	public String getNama_lengkap() {
-		return nama_lengkap;
-	}
-	
-	public void setNama_lengkap(String nama_lengkap) {
-		this.nama_lengkap = nama_lengkap;
-	}
-	
-	public Date getTanggal_lahir() {
-		return tanggal_lahir;
-	}
-	
-	public void setTanggal_lahir(Date tanggal_lahir) {
-		this.tanggal_lahir = tanggal_lahir;
-	}
-	
-	public String getAlamat() {
-		return alamat;
-	}
-	
-	public void setAlamat(String alamat) {
-		this.alamat = alamat;
-	}
-
 	public List<Ujian> getUjian() {
 		return ujian;
 	}
-
 	public void setUjian(List<Ujian> ujian) {
 		this.ujian = ujian;
 	}
-
+	public List<Feedback> getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(List<Feedback> feedback) {
+		this.feedback = feedback;
+	}
 	public List<Pembayaran> getPembayaran() {
 		return pembayaran;
 	}
-
 	public void setPembayaran(List<Pembayaran> pembayaran) {
 		this.pembayaran = pembayaran;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public SesiKelas getSesiKelas() {
+		return sesiKelas;
+	}
+	public void setSesiKelas(SesiKelas sesiKelas) {
+		this.sesiKelas = sesiKelas;
+	}
+	public String getNoKtp() {
+		return noKtp;
+	}
+	public void setNoKtp(String noKtp) {
+		this.noKtp = noKtp;
+	}
+	public String getNamaLengkap() {
+		return namaLengkap;
+	}
+	public void setNamaLengkap(String namaLengkap) {
+		this.namaLengkap = namaLengkap;
+	}
+	public Date getTanggalLahir() {
+		return tanggalLahir;
+	}
+	public void setTanggalLahir(Date tanggalLahir) {
+		this.tanggalLahir = tanggalLahir;
+	}
+	public String getAlamat() {
+		return alamat;
+	}
+	public void setAlamat(String alamat) {
+		this.alamat = alamat;
 	}
 	
 }
