@@ -25,7 +25,9 @@ public class Department {
 	private String contact;
 	@Column(name="department_address")
 	private String departmentAddress;
+	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="department")
+	//fetchtype lazy sebuah jenis fethc yang tidak mengambil seluruh data relasi
 	private List<Employee> employees;
 	 
 	public List<Employee> getEmployees() {
