@@ -16,13 +16,14 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity //untuk menjadikan kelas menjadi sebuah tabel secara otomatis
 @Table(name = "PAKET_KURSUS")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idKursus")
 public class PaketKursus {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="id_kursus", unique=true, nullable=false)
 	private int idKursus;
+	
 	@Column(name="nama_kursus")
 	private String namaKursus;
 	private int durasi;
@@ -30,47 +31,46 @@ public class PaketKursus {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="paketKursus")
 	private List<Jadwal> jadwal;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="paketKursus")
 	private List<Pembayaran> pembayaran;
+	
 	
 	public int getIdKursus() {
 		return idKursus;
 	}
-	
 	public void setIdKursus(int idKursus) {
 		this.idKursus = idKursus;
 	}
-	
 	public String getNamaKursus() {
 		return namaKursus;
 	}
-	
 	public void setNamaKursus(String namaKursus) {
 		this.namaKursus = namaKursus;
 	}
-	
 	public int getDurasi() {
 		return durasi;
 	}
-	
 	public void setDurasi(int durasi) {
 		this.durasi = durasi;
 	}
-	
 	public int getHarga() {
 		return harga;
 	}
-	
 	public void setHarga(int harga) {
 		this.harga = harga;
 	}
-
+	public List<Jadwal> getJadwal() {
+		return jadwal;
+	}
+	public void setJadwal(List<Jadwal> jadwal) {
+		this.jadwal = jadwal;
+	}
 	public List<Pembayaran> getPembayaran() {
 		return pembayaran;
 	}
-
 	public void setPembayaran(List<Pembayaran> pembayaran) {
 		this.pembayaran = pembayaran;
 	}
-	
 	
 }

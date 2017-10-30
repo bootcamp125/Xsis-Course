@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="SESI_KELAS")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="@idSesiKelas")
 public class SesiKelas {
 	
 	@Id
@@ -26,7 +26,9 @@ public class SesiKelas {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
 	private List<Jadwal> jadwal;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
 	private List<Peserta> peserta;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
 	private List<FeedbackDetail> feedbackDetail;
 	
 	@Column(name="nama_kelas")
@@ -54,6 +56,22 @@ public class SesiKelas {
 		this.jadwal = jadwal;
 	}
 
+	public List<Peserta> getPeserta() {
+		return peserta;
+	}
+
+	public void setPeserta(List<Peserta> peserta) {
+		this.peserta = peserta;
+	}
+
+	public List<FeedbackDetail> getFeedbackDetail() {
+		return feedbackDetail;
+	}
+
+	public void setFeedbackDetail(List<FeedbackDetail> feedbackDetail) {
+		this.feedbackDetail = feedbackDetail;
+	}
+
 	public String getNamaKelas() {
 		return namaKelas;
 	}
@@ -78,20 +96,6 @@ public class SesiKelas {
 		this.tanggalSelesai = tanggalSelesai;
 	}
 
-	public List<Peserta> getPeserta() {
-		return peserta;
-	}
-
-	public void setPeserta(List<Peserta> peserta) {
-		this.peserta = peserta;
-	}
-
-	public List<FeedbackDetail> getFeedbackDetail() {
-		return feedbackDetail;
-	}
-
-	public void setFeedbackDetail(List<FeedbackDetail> feedbackDetail) {
-		this.feedbackDetail = feedbackDetail;
-	}
-		
+	
+			
 }

@@ -21,20 +21,24 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "PENGAJAR")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idPengajar")
 public class Pengajar {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="id_pengajar", unique=true, nullable=false)
 	private int idPengajar;
+	
 	@Column(name="no_ktp")
 	private String no_ktp;
+	
 	@Column(name="nama_lengkap")
 	private String nama_lengkap;
+	
 	@Column(name="tanggal_lahir")
 	@Temporal(TemporalType.DATE)
 	private Date tanggalLahir;
+	
 	private String alamat;
 	private String keahlian;
 	
@@ -45,62 +49,64 @@ public class Pengajar {
 	//untuk buat foreign key ke tabel lain
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="pengajar")
 	private List<FeedbackDetail> feedbackDetail;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="pengajar")
 	private List<Jadwal> jadwal;
+	
 	
 	public int getIdPengajar() {
 		return idPengajar;
 	}
-	
 	public void setIdPengajar(int idPengajar) {
 		this.idPengajar = idPengajar;
 	}
-	
 	public String getNo_ktp() {
 		return no_ktp;
 	}
-	
 	public void setNo_ktp(String no_ktp) {
 		this.no_ktp = no_ktp;
 	}
-	
 	public String getNama_lengkap() {
 		return nama_lengkap;
 	}
-	
 	public void setNama_lengkap(String nama_lengkap) {
 		this.nama_lengkap = nama_lengkap;
 	}
-	
 	public Date getTanggalLahir() {
 		return tanggalLahir;
 	}
-	
 	public void setTanggalLahir(Date tanggalLahir) {
 		this.tanggalLahir = tanggalLahir;
 	}
-	
 	public String getAlamat() {
 		return alamat;
 	}
-	
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
 	}
-	
 	public String getKeahlian() {
 		return keahlian;
 	}
-	
 	public void setKeahlian(String keahlian) {
 		this.keahlian = keahlian;
 	}
-
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<FeedbackDetail> getFeedbackDetail() {
+		return feedbackDetail;
+	}
+	public void setFeedbackDetail(List<FeedbackDetail> feedbackDetail) {
+		this.feedbackDetail = feedbackDetail;
+	}
 	public List<Jadwal> getJadwal() {
 		return jadwal;
 	}
-
 	public void setJadwal(List<Jadwal> jadwal) {
 		this.jadwal = jadwal;
 	}
-
+	
+	
 }

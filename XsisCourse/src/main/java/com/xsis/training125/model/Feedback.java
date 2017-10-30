@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "FEEDBACK")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idFeedback")
 public class Feedback {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -38,5 +38,39 @@ public class Feedback {
 	@Column(name="tanggal_feedback")
 	@Temporal(TemporalType.DATE)
 	private Date tanggal_feedback;
+
+	public int getIdFeedback() {
+		return idFeedback;
+	}
+
+	public void setIdFeedback(int idFeedback) {
+		this.idFeedback = idFeedback;
+	}
+
+	public List<FeedbackDetail> getFeedbackDetail() {
+		return feedbackDetail;
+	}
+
+	public void setFeedbackDetail(List<FeedbackDetail> feedbackDetail) {
+		this.feedbackDetail = feedbackDetail;
+	}
+
+	public Peserta getPeserta() {
+		return peserta;
+	}
+
+	public void setPeserta(Peserta peserta) {
+		this.peserta = peserta;
+	}
+
+	public Date getTanggal_feedback() {
+		return tanggal_feedback;
+	}
+
+	public void setTanggal_feedback(Date tanggal_feedback) {
+		this.tanggal_feedback = tanggal_feedback;
+	}
+	
+	
 	
 }

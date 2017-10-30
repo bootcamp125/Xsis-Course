@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "PESERTA")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idPeserta")
 public class Peserta {
 	
 	@Id 
@@ -30,7 +30,9 @@ public class Peserta {
 	//Membuat One to Many untuk tabel ujian dan feedback
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="peserta")
 	private List<Ujian> ujian;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="peserta")
 	private List<Feedback> feedback;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="peserta")
 	private List<Pembayaran> pembayaran;
 	
 	@ManyToOne
@@ -50,6 +52,8 @@ public class Peserta {
 	@Column(name="tanggal_lahir", nullable=false)
 	private Date tanggalLahir;
 	private String alamat;
+	
+	
 	public int getIdPeserta() {
 		return idPeserta;
 	}
@@ -110,5 +114,7 @@ public class Peserta {
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
 	}
+	
+	
 	
 }

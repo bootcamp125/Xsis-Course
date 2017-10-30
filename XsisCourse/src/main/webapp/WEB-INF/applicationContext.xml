@@ -32,6 +32,8 @@
 	 <property name="dataSource" ref="dataSource"></property>
 	 <property name="annotatedClasses">
 			<list>
+				<value>com.xsis.training125.model.Employee</value>
+				<value>com.xsis.training125.model.Department</value>
 				<value>com.xsis.training125.model.Feedback</value>
 				<value>com.xsis.training125.model.FeedbackDetail</value>
 				<value>com.xsis.training125.model.Jadwal</value>
@@ -43,8 +45,6 @@
 				<value>com.xsis.training125.model.SesiKelas</value>
 				<value>com.xsis.training125.model.Ujian</value>
 				<value>com.xsis.training125.model.User</value>
-				<value>com.xsis.training125.model.Employee</value>
-				<value>com.xsis.training125.model.Department</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

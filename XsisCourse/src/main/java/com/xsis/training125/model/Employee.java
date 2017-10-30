@@ -16,17 +16,17 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity 
+@Entity
 @Table(name = "EMPLOYEE")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idEmployee")
 public class Employee {
     @Id //primary key
     @GeneratedValue(strategy=GenerationType.AUTO) //auto increment
-	private int id;
+	private int idEmployee;
     @Column(name="NAME", nullable=false) //membuat kolom dengan nama berbeda dari classnya
 	private String name;
 	private String address;
-	@Column(unique=true) 
+	@Column(unique=true)
 	private String email;
 	private Double salary;
 	
@@ -51,9 +51,9 @@ public class Employee {
 
 	public Employee(){}
 	
-	public Employee(int id, String name, String address, String email, Double salary) {
+	public Employee(int idEmployee, String name, String address, String email, Double salary) {
 		super();
-		this.id = id;
+		this.idEmployee = idEmployee;
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -68,11 +68,11 @@ public class Employee {
 		this.birthDay = birthDay;
 	}
 
-	public int getId() {
-		return id;
+	public int getidEmployee() {
+		return idEmployee;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setidEmployee(int idEmployee) {
+		this.idEmployee = idEmployee;
 	}
 	public String getName() {
 		return name;

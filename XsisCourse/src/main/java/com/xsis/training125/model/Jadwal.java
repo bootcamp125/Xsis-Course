@@ -14,14 +14,15 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "JADWAL")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idJadwal")
 public class Jadwal {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="id_jadwal", unique=true, nullable=false)
 	private int idJadwal;
+	
 	private String hari;
+	
 	private String jam;
 	
 	@ManyToOne

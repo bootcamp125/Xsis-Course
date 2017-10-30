@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "FEEDBACK_DETAIL")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@idFeedbackDetail")
 public class FeedbackDetail {
 
 	@Id
@@ -98,5 +98,6 @@ public class FeedbackDetail {
 	public void setFeedbackPengajar(String feedbackPengajar) {
 		this.feedbackPengajar = feedbackPengajar;
 	}
-	
+
+
 }
