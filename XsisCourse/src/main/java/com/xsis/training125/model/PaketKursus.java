@@ -21,7 +21,7 @@ public class PaketKursus {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	@Column(name="id_kursus", nullable=false)
+	@Column(name="id_kursus", unique=true, nullable=false)
 	private int idKursus;
 	@Column(name="nama_kursus")
 	private String namaKursus;

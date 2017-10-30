@@ -21,7 +21,8 @@ public class User {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int id_user;
+	@Column(name="id_user", unique=true, nullable=false)
+	private int idUser;
 	@Column(unique=true)
 	private String username;
 	private String password;
@@ -39,12 +40,12 @@ public class User {
 		this.password = password;
 	}
 
-	public int getId_user() {
-		return id_user;
+	public int getIdUser() {
+		return idUser;
 	}
 
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getUsername() {

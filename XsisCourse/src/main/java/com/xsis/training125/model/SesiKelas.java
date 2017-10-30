@@ -26,7 +26,8 @@ public class SesiKelas {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
 	private List<Jadwal> jadwal;
-	
+	private List<Peserta> peserta;
+	private List<FeedbackDetail> feedbackDetail;
 	
 	@Column(name="nama_kelas")
 	private String namaKelas;
@@ -75,6 +76,22 @@ public class SesiKelas {
 
 	public void setTanggalSelesai(String tanggalSelesai) {
 		this.tanggalSelesai = tanggalSelesai;
+	}
+
+	public List<Peserta> getPeserta() {
+		return peserta;
+	}
+
+	public void setPeserta(List<Peserta> peserta) {
+		this.peserta = peserta;
+	}
+
+	public List<FeedbackDetail> getFeedbackDetail() {
+		return feedbackDetail;
+	}
+
+	public void setFeedbackDetail(List<FeedbackDetail> feedbackDetail) {
+		this.feedbackDetail = feedbackDetail;
 	}
 		
 }

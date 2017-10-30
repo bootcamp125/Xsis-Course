@@ -32,7 +32,4 @@ public class Ujian {
 	@Column(name="hasil_ujian")
 	private String hasilUjian;
 
-
-
-
 }

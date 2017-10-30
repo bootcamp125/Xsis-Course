@@ -24,7 +24,7 @@ public class Peserta {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.SEQUENCE) //Auto Increment
-	@Column(name="id_peserta")
+	@Column(name="id_peserta", unique=true)
 	private int idPeserta;
 	
 	//Membuat One to Many untuk tabel ujian dan feedback
@@ -32,8 +32,6 @@ public class Peserta {
 	private List<Ujian> ujian;
 	private List<Feedback> feedback;
 	private List<Pembayaran> pembayaran;
-	
-	
 	
 	@ManyToOne
 	@JoinColumn(name="id_user")

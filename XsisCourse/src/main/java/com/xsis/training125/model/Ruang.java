@@ -21,7 +21,7 @@ public class Ruang {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	@Column(name="id_ruang", nullable=false)
+	@Column(name="id_ruang", unique=true, nullable=false)
 	private int idRuang;
 	@Column(name="nama_ruang")
 	private String namaRuang;
