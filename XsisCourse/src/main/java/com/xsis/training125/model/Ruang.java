@@ -1,5 +1,7 @@
 package com.xsis.training125.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +23,9 @@ public class Ruang {
 	private int idRuang;
 	@Column(name="nama_ruang")
 	private String namaRuang;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="ruang")
+	private List<Jadwal> jadwal;
 	
 	public int getIdRuang() {
 		return idRuang;

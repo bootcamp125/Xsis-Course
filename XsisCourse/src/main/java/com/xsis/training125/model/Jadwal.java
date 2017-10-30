@@ -30,6 +30,22 @@ public class Jadwal {
 	private String hari;
 	private String jam;
 	
+	@ManyToOne
+	@JoinColumn(name="id_pengajar")
+	private Department department;
+
+	@ManyToOne
+	@JoinColumn(name="id_department")
+	private Department department;
+
+	@ManyToOne
+	@JoinColumn(name="id_department")
+	private Department department;
+
+	@ManyToOne
+	@JoinColumn(name="id_department")
+	private Department department;
+
 	public int getIdJadwal() {
 		return idJadwal;
 	}

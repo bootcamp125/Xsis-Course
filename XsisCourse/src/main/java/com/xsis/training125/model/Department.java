@@ -26,6 +26,7 @@ public class Department {
 	@Column(name="department_address")
 	private String departmentAddress;
 	
+	//untuk buat foreign key ke tabel lain
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="department")
 	//fetchtype lazy sebuah jenis fethc yang tidak mengambil seluruh data relasi
 	private List<Employee> employees;

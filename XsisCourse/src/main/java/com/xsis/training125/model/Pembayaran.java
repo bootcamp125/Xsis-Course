@@ -1,10 +1,13 @@
 package com.xsis.training125.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -26,9 +29,14 @@ public class Pembayaran {
 	private String status;
 	private int nominal;
 	
-	/*@OneToMany(fetch=FetchType.LAZY, mappedBy="department")
-	private List<Employee> employees;
-	*/
+	@ManyToOne
+	@JoinColumn(name="id_kursus")
+	private PaketKursus paketKursus;
+	
+	@ManyToOne
+	@JoinColumn(name="id_peserta")
+	private Peserta peserta;
+	
 	public int getIdPembayaran() {
 		return idPembayaran;
 	}

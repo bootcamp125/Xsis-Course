@@ -1,16 +1,20 @@
 package com.xsis.training125.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity //untuk menjadikan kelas menjadi sebuah tabel secara otomatis
 @Table(name = "Paket_Kursus")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class PaketKursus {
@@ -23,6 +27,10 @@ public class PaketKursus {
 	private String namaKursus;
 	private int durasi;
 	private int harga;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="paketKursus")
+	private List<Jadwal> jadwal;
+	private List<Pembayaran> pembayaran;
 	
 	public int getIdKursus() {
 		return idKursus;
@@ -54,6 +62,14 @@ public class PaketKursus {
 	
 	public void setHarga(int harga) {
 		this.harga = harga;
+	}
+
+	public List<Pembayaran> getPembayaran() {
+		return pembayaran;
+	}
+
+	public void setPembayaran(List<Pembayaran> pembayaran) {
+		this.pembayaran = pembayaran;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.xsis.training125.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,10 @@ public class User {
 	private String username;
 	private String password;
 	private String level;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	private List<Pengajar> pengajar;
+	private List<Peserta> peserta;
 	
 	public String getPassword() {
 		return password;

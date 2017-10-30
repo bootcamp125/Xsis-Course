@@ -16,8 +16,6 @@ public class Ujian {
 	private String nama_ujian;
 	private String hasil_ujian;
 	
-	
-	
 	public int getId_ujian() {
 		return id_ujian;
 	}

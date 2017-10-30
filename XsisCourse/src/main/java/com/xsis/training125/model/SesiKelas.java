@@ -1,5 +1,7 @@
 package com.xsis.training125.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,7 +18,8 @@ public class SesiKelas {
 	private String tanggal_mulai;
 	private String tanggal_selesai;
 	
-	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="sesiKelas")
+	private List<Jadwal> jadwal;
 	
 	public int getId_sesi_kelas() {
 		return id_sesi_kelas;
