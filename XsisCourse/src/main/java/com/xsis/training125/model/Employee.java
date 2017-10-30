@@ -29,9 +29,12 @@ public class Employee {
 	@Column(unique=true)
 	private String email;
 	private Double salary;
+	
+	//untuk buat foreign key dari tabel lain
 	@ManyToOne
 	@JoinColumn(name="id_department")
 	private Department department;
+	
 	@Column(name="birth_day")
 	@Temporal(TemporalType.DATE)
 	private Date birthDay;

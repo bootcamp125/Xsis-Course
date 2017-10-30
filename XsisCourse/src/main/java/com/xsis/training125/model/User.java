@@ -1,23 +1,21 @@
 package com.xsis.training125.model;
 
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "User")
+@Table(name = "USER")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class User {
 	
@@ -28,6 +26,10 @@ public class User {
 	private String username;
 	private String password;
 	private String level;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+	private List<Pengajar> pengajar;
+	private List<Peserta> peserta;
 	
 	public String getPassword() {
 		return password;
@@ -59,6 +61,14 @@ public class User {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	public List<Peserta> getPeserta() {
+		return peserta;
+	}
+
+	public void setPeserta(List<Peserta> peserta) {
+		this.peserta = peserta;
 	}
 	
 	

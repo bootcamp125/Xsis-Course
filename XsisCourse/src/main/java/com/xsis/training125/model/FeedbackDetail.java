@@ -1,57 +1,102 @@
 package com.xsis.training125.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@Table(name = "FEEDBACK_DETAIL")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class FeedbackDetail {
 
+	@Id
+	@Column(name="id_feedback_detail")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int idFeedbackDetail;
 	
-	private int id_feedback_detail;
-	private int id_pengajar;
-	private int id_feedback;
-	private int id_sesi_kelas;
-	private String feedback_fasilitas;
-	private String feedback_sesi_kelas;
-	private String feedback_pengajar;
+	@ManyToOne
+	@JoinColumn(name="id_pengajar")
+	private Pengajar pengajar;
 	
+	@ManyToOne
+	@JoinColumn(name="id_feedback")
+	private Feedback feedback;
+
+	@ManyToOne
+	@JoinColumn(name="id_sesi_kelas")
+	private SesiKelas sesiKelas;
 	
-	public int getId_feedback_detail() {
-		return id_feedback_detail;
+	@Column(name="feedback_fasilitas")
+	private String feedbackFasilitas;
+
+	@Column(name="feedback_sesi_kelas")
+	private String feedbackSesiKelas;
+
+	@Column(name="feedback_pengajar")
+	private String feedbackPengajar;
+
+	public int getIdFeedbackDetail() {
+		return idFeedbackDetail;
 	}
-	public void setId_feedback_detail(int id_feedback_detail) {
-		this.id_feedback_detail = id_feedback_detail;
+
+	public void setIdFeedbackDetail(int idFeedbackDetail) {
+		this.idFeedbackDetail = idFeedbackDetail;
 	}
-	public int getId_pengajar() {
-		return id_pengajar;
+
+	public Pengajar getPengajar() {
+		return pengajar;
 	}
-	public void setId_pengajar(int id_pengajar) {
-		this.id_pengajar = id_pengajar;
+
+	public void setPengajar(Pengajar pengajar) {
+		this.pengajar = pengajar;
 	}
-	public int getId_feedback() {
-		return id_feedback;
+
+	public Feedback getFeedback() {
+		return feedback;
 	}
-	public void setId_feedback(int id_feedback) {
-		this.id_feedback = id_feedback;
+
+	public void setFeedback(Feedback feedback) {
+		this.feedback = feedback;
 	}
-	public int getId_sesi_kelas() {
-		return id_sesi_kelas;
+
+	public SesiKelas getSesiKelas() {
+		return sesiKelas;
 	}
-	public void setId_sesi_kelas(int id_sesi_kelas) {
-		this.id_sesi_kelas = id_sesi_kelas;
+
+	public void setSesiKelas(SesiKelas sesiKelas) {
+		this.sesiKelas = sesiKelas;
 	}
-	public String getFeedback_fasilitas() {
-		return feedback_fasilitas;
+
+	public String getFeedbackFasilitas() {
+		return feedbackFasilitas;
 	}
-	public void setFeedback_fasilitas(String feedback_fasilitas) {
-		this.feedback_fasilitas = feedback_fasilitas;
+
+	public void setFeedbackFasilitas(String feedbackFasilitas) {
+		this.feedbackFasilitas = feedbackFasilitas;
 	}
-	public String getFeedback_sesi_kelas() {
-		return feedback_sesi_kelas;
+
+	public String getFeedbackSesiKelas() {
+		return feedbackSesiKelas;
 	}
-	public void setFeedback_sesi_kelas(String feedback_sesi_kelas) {
-		this.feedback_sesi_kelas = feedback_sesi_kelas;
+
+	public void setFeedbackSesiKelas(String feedbackSesiKelas) {
+		this.feedbackSesiKelas = feedbackSesiKelas;
 	}
-	public String getFeedback_pengajar() {
-		return feedback_pengajar;
+
+	public String getFeedbackPengajar() {
+		return feedbackPengajar;
 	}
-	public void setFeedback_pengajar(String feedback_pengajar) {
-		this.feedback_pengajar = feedback_pengajar;
+
+	public void setFeedbackPengajar(String feedbackPengajar) {
+		this.feedbackPengajar = feedbackPengajar;
 	}
+	
 }
