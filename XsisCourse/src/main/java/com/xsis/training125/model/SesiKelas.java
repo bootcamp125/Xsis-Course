@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class SesiKelas {
 	
 	@Id
-	@Column(name="id_sesi_kelas")
+	@Column(name="id_sesi_kelas") 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idSesiKelas;
 	
