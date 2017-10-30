@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
+@Entity 
 @Table(name = "EMPLOYEE")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Employee {
@@ -26,7 +26,7 @@ public class Employee {
     @Column(name="NAME", nullable=false) //membuat kolom dengan nama berbeda dari classnya
 	private String name;
 	private String address;
-	@Column(unique=true)
+	@Column(unique=true) 
 	private String email;
 	private Double salary;
 	

@@ -17,7 +17,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Department {
 
-	@Id
+	
+ 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name="department_name", nullable=false)
