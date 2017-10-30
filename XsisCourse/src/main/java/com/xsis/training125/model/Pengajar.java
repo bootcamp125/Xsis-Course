@@ -1,12 +1,17 @@
 package com.xsis.training125.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,8 +28,6 @@ public class Pengajar {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_pengajar", unique=true, nullable=false)
 	private int idPengajar;
-	@Column(name="id_user", nullable=false)
-	private int idUser;
 	@Column(name="no_ktp")
 	private String no_ktp;
 	@Column(name="nama_lengkap")
@@ -35,20 +38,21 @@ public class Pengajar {
 	private String alamat;
 	private String keahlian;
 	
+	@ManyToOne
+	@JoinColumn(name="id_user")
+	private User user;
+
+	//untuk buat foreign key ke tabel lain
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="pengajar")
+	private List<FeedbackDetail> feedbackDetail;
+	private List<Jadwal> jadwal;
+	
 	public int getIdPengajar() {
 		return idPengajar;
 	}
 	
 	public void setIdPengajar(int idPengajar) {
 		this.idPengajar = idPengajar;
-	}
-	
-	public int getIdUser() {
-		return idUser;
-	}
-	
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
 	}
 	
 	public String getNo_ktp() {
@@ -89,6 +93,14 @@ public class Pengajar {
 	
 	public void setKeahlian(String keahlian) {
 		this.keahlian = keahlian;
+	}
+
+	public List<Jadwal> getJadwal() {
+		return jadwal;
+	}
+
+	public void setJadwal(List<Jadwal> jadwal) {
+		this.jadwal = jadwal;
 	}
 
 }

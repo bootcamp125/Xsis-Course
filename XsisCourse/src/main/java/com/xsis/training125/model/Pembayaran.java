@@ -22,10 +22,6 @@ public class Pembayaran {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_pembayaran", unique=true, nullable=false)
 	private int idPembayaran;
-	@Column(name="id_kursus", nullable=false)
-	private int idKursus;
-	@Column(name="id_peserta", nullable=false)
-	private int idPeserta;
 	private String status;
 	private int nominal;
 	
@@ -43,22 +39,6 @@ public class Pembayaran {
 	
 	public void setIdPembayaran(int idPembayaran) {
 		this.idPembayaran = idPembayaran;
-	}
-	
-	public int getIdKursus() {
-		return idKursus;
-	}
-	
-	public void setIdKursus(int idKursus) {
-		this.idKursus = idKursus;
-	}
-	
-	public int getIdPeserta() {
-		return idPeserta;
-	}
-	
-	public void setIdPeserta(int idPeserta) {
-		this.idPeserta = idPeserta;
 	}
 	
 	public String getStatus() {
