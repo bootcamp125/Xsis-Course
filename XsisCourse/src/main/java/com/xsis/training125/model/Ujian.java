@@ -13,18 +13,18 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name="UJIAN")
+@Table(name = "UJIAN")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Ujian {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="id_ujian")
 	private int idUjian;
 
 	@ManyToOne
 	@JoinColumn(name="id_peserta")
-	private int idPeserta;
+	private Peserta peserta;
 	
 	@Column(name="nama_ujian")
 	private String namaUjian;
@@ -32,38 +32,7 @@ public class Ujian {
 	@Column(name="hasil_ujian")
 	private String hasilUjian;
 
-	
-	
-	public int getIdUjian() {
-		return idUjian;
-	}
 
-	public void setIdUjian(int idUjian) {
-		this.idUjian = idUjian;
-	}
 
-	public int getIdPeserta() {
-		return idPeserta;
-	}
 
-	public void setIdPeserta(int idPeserta) {
-		this.idPeserta = idPeserta;
-	}
-
-	public String getNamaUjian() {
-		return namaUjian;
-	}
-
-	public void setNamaUjian(String namaUjian) {
-		this.namaUjian = namaUjian;
-	}
-
-	public String getHasilUjian() {
-		return hasilUjian;
-	}
-
-	public void setHasilUjian(String hasilUjian) {
-		this.hasilUjian = hasilUjian;
-	}
-	
 }

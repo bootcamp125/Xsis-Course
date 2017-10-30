@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Peserta {
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO) //Auto Increment
+	@GeneratedValue(strategy=GenerationType.SEQUENCE) //Auto Increment
 	@Column(name="id_peserta")
 	private int idPeserta;
 	
@@ -31,6 +31,7 @@ public class Peserta {
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="peserta")
 	private List<Ujian> ujian;
 	private List<Feedback> feedback;
+	private List<Pembayaran> pembayaran;
 	
 	
 	
@@ -51,15 +52,6 @@ public class Peserta {
 	@Column(name="tanggal_lahir", nullable=false)
 	private Date tanggalLahir;
 	private String alamat;
-	
-	
-	
-	public SesiKelas getSesiKelas() {
-		return sesiKelas;
-	}
-	public void setSesiKelas(SesiKelas sesiKelas) {
-		this.sesiKelas = sesiKelas;
-	}
 	public int getIdPeserta() {
 		return idPeserta;
 	}
@@ -78,11 +70,23 @@ public class Peserta {
 	public void setFeedback(List<Feedback> feedback) {
 		this.feedback = feedback;
 	}
+	public List<Pembayaran> getPembayaran() {
+		return pembayaran;
+	}
+	public void setPembayaran(List<Pembayaran> pembayaran) {
+		this.pembayaran = pembayaran;
+	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public SesiKelas getSesiKelas() {
+		return sesiKelas;
+	}
+	public void setSesiKelas(SesiKelas sesiKelas) {
+		this.sesiKelas = sesiKelas;
 	}
 	public String getNoKtp() {
 		return noKtp;
@@ -108,18 +112,5 @@ public class Peserta {
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
 	}
-	
-/*	public Peserta(){}
-	
-	public Peserta(int id_peserta,int id_user, int id_kelas, String no_ktp, String nama_lengkap, String alamat, Date tanggal_lahir) {
-		super();
-		this.id_peserta = id_peserta;
-		this.id_user = id_user;
-		this.id_kelas = id_kelas;
-		this.no_ktp = no_ktp;
-		this.nama_lengkap = nama_lengkap;
-		this.alamat = alamat;
-	}
-*/	
 	
 }
