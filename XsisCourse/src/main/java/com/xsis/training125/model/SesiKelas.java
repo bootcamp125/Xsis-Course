@@ -1,5 +1,6 @@
 package com.xsis.training125.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -35,10 +38,10 @@ public class SesiKelas {
 	private String namaKelas;
 	
 	@Column(name="tanggal_mulai")
-	private String tanggalMulai;
+	private Date tanggalMulai;
 	
 	@Column(name="tanggal_selesai")
-	private String tanggalSelesai;
+	private Date tanggalSelesai;
 
 	public int getIdSesiKelas() {
 		return idSesiKelas;
@@ -80,22 +83,35 @@ public class SesiKelas {
 		this.namaKelas = namaKelas;
 	}
 
-	public String getTanggalMulai() {
+	public Date getTanggalMulai() {
 		return tanggalMulai;
 	}
 
-	public void setTanggalMulai(String tanggalMulai) {
+	public void setTanggalMulai(Date tanggalMulai) {
 		this.tanggalMulai = tanggalMulai;
 	}
 
-	public String getTanggalSelesai() {
+	public Date getTanggalSelesai() {
 		return tanggalSelesai;
 	}
 
-	public void setTanggalSelesai(String tanggalSelesai) {
+	public void setTanggalSelesai(Date tanggalSelesai) {
 		this.tanggalSelesai = tanggalSelesai;
 	}
 
+	public SesiKelas(){}
+	
+	public SesiKelas(int idSesiKelas, List<Jadwal> jadwal, List<Peserta> peserta, List<FeedbackDetail> feedbackDetail,
+			String namaKelas, Date tanggalMulai, Date tanggalSelesai) {
+		super();
+		this.idSesiKelas = idSesiKelas;
+		this.jadwal = jadwal;
+		this.peserta = peserta;
+		this.feedbackDetail = feedbackDetail;
+		this.namaKelas = namaKelas;
+		this.tanggalMulai = tanggalMulai;
+		this.tanggalSelesai = tanggalSelesai;
+	}
 	
 			
 }
